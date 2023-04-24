@@ -1,7 +1,9 @@
 package com.example.homework6_1
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.homework6_1.MainActivity.Companion.KEY_FOR_TEXT
 import com.example.homework6_1.databinding.ActivityMainBinding
 import com.example.homework6_1.databinding.ActivitySecondBinding
 
@@ -9,7 +11,9 @@ class SecondActivity : AppCompatActivity() {
     lateinit var binding: ActivitySecondBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivitySecondBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.edit1.setText(intent.getStringExtra(KEY_FOR_TEXT))
         initListener()
 
     }
@@ -20,9 +24,5 @@ class SecondActivity : AppCompatActivity() {
             setResult(RESULT_OK, intent)
             finish()
         }
-    }
-
-    companion object {
-        const val KEY_FOR_TEXT = "text_key"
     }
 }
