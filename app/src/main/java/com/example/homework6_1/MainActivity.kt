@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     private val activityLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                binding.edit.setText(result.data?.getStringExtra(KEY_FOR_TEXT))
+                binding.edit.setText(result.data?.getStringExtra(MA_SA_TEXT))
             }
         }
 
@@ -31,13 +31,13 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Вы не ввели текст", Toast.LENGTH_SHORT).show()
             }else{
                 val intent = Intent(this, SecondActivity::class.java)
-                intent.putExtra(KEY_FOR_TEXT,binding.edit.text.toString())
+                intent.putExtra(MA_SA_TEXT,binding.edit.text.toString())
                 activityLauncher.launch(intent)
             }
         }
     }
 
     companion object{
-        const val KEY_FOR_TEXT = "text_key"
+        const val MA_SA_TEXT = "MA_SA_TEXT"
     }
 }
